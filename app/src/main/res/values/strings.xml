@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">AndroidERestaurant</string>
+    <string name="bienvenue_chez">Bienvenue chez</string>
+    <string name="il_ristorante">Il Ristorante</string>
+    <string name="entrees">Entrees</string>
+    <string name="plats">plats</string>
+    <string name="desserts">desserts</string>
+    <string name="categorie" />
+
+    <string-array name="Entrees">
+        <item>Antipasti</item>
+        <item>Salade</item>
+        <item>Saucisson</item>
+    </string-array>
+
+    <string-array name="Plats">
+        <item>Spaghetti Bolognese</item>
+        <item>Pasta a la Carbonara</item>
+        <item>Pizza quatro fromagi</item>
+        <item>Lasagna</item>
+    </string-array>
+
+    <string-array name="Desserts">
+        <item>Tiramisu</item>
+        <item>Cafe gourmand</item>
+    </string-array>
+</resources>
