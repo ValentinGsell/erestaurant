@@ -20,17 +20,23 @@ class HomeActivity : AppCompatActivity() {
 
         var entreesTextView = findViewById<TextView>(R.id.entrees)
         entreesTextView.setOnClickListener{
-            goToNextActivity("Entrees")
+            var intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("categorie", "Entrees")
+            startActivity(intent)
         }
 
         var platsTextView = findViewById<TextView>(R.id.plats)
         platsTextView.setOnClickListener{
-            goToNextActivity("Plats")
+            var intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("categorie", "Plats")
+            startActivity(intent)
         }
 
         var dessertsTextView = findViewById<TextView>(R.id.desserts)
         dessertsTextView.setOnClickListener{
-            goToNextActivity("Desserts")
+            var intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("categorie", "Desserts")
+            startActivity(intent)
 
         }
     }
@@ -38,12 +44,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d("AndroidERestaurant", "Destroyed succesfully")
-    }
-
-    private fun goToNextActivity(category: String){
-        val intent = Intent(this, MenuActivity::class.java)
-        intent.putExtra("categorie", category)
-        startActivity(intent)
     }
 
 }
