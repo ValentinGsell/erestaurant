@@ -1,4 +1,6 @@
-package com.example.androiderestaurant
+package com.example.androiderestaurant.model
+
+import java.io.Serializable
 
 data class Ingredient(
     val id: String,
@@ -8,6 +10,6 @@ data class Ingredient(
     val create_date: String,
     val update_date: String,
     val id_pizza: String
-)
+): Serializable
 
 

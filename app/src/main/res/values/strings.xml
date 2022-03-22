@@ -6,6 +6,10 @@
     <string name="plats">plats</string>
     <string name="desserts">desserts</string>
     <string name="categorie" />
+    <string name="price">Price</string>
+    <string name="name">Name :</string>
+    <string name="le_sang">le sang</string>
+    <string name="item_price">itemPrice</string>
 
     <string-array name="Entrees">
         <item>Antipasti</item>

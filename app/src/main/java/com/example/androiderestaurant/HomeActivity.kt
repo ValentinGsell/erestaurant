@@ -5,45 +5,43 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import com.example.androiderestaurant.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
 
-        var EntreeButton = findViewById<TextView>(R.id.welcome)
-        EntreeButton.setOnClickListener{
+        val binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        binding.entrees.setOnClickListener{
+            goToMenuActivity("Entrées")
         }
 
-
-        var entreesTextView = findViewById<TextView>(R.id.entrees)
-        entreesTextView.setOnClickListener{
-            var intent = Intent(this, MenuActivity::class.java)
-            intent.putExtra("categorie", "Entrees")
-            startActivity(intent)
+        binding.desserts.setOnClickListener {
+            goToMenuActivity("Desserts")
         }
 
-        var platsTextView = findViewById<TextView>(R.id.plats)
-        platsTextView.setOnClickListener{
-            var intent = Intent(this, MenuActivity::class.java)
-            intent.putExtra("categorie", "Plats")
-            startActivity(intent)
-        }
-
-        var dessertsTextView = findViewById<TextView>(R.id.desserts)
-        dessertsTextView.setOnClickListener{
-            var intent = Intent(this, MenuActivity::class.java)
-            intent.putExtra("categorie", "Desserts")
-            startActivity(intent)
-
+        binding.plats.setOnClickListener {
+            goToMenuActivity("Plats")
         }
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d("AndroidERestaurant", "Destroyed succesfully")
     }
 
+
+    private fun goToMenuActivity(category: String)
+    {
+        val intent = Intent(this, MenuActivity::class.java)
+        intent.putExtra("categorie", category)
+        startActivity(intent)
+
+    }
 }

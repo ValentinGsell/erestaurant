@@ -1,4 +1,6 @@
-package com.example.androiderestaurant
+package com.example.androiderestaurant.model
+
+import java.io.Serializable
 
 data class Price(
     val id: String,
@@ -6,6 +8,6 @@ data class Price(
     val id_size: String,
     val price: String,
     val create_date: String,
-    val upadte_date: String,
+    val update_date: String,
     val size: String
-)
+): Serializable

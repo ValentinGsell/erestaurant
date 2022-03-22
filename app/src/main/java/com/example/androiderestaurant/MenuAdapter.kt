@@ -5,26 +5,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androiderestaurant.model.Item
 
 
-
-class MenuAdapter(private val arrayList: ArrayList<String>) : RecyclerView.Adapter<MenuAdapter.ProductViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_menu, parent, false)
-        return ProductViewHolder(itemView)
+internal class MenuAdapter(private var itemsList: ArrayList<Item>, val clickListener: (Item) -> Unit) :
+    RecyclerView.Adapter<MenuAdapter.MyViewHolder>() {
+    internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
+        var prix: TextView = view.findViewById(R.id.itemPrice)
+        var itemTextView: TextView = view.findViewById(R.id.itemName)
     }
 
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val currentItem = arrayList[position]
-        holder.name.text = currentItem.toString()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+        return MyViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val item = itemsList[position]
+        holder.itemTextView.text = item.name_fr
+        holder.prix.text = item.prices[0].price +" €"
+
+        holder.itemView.setOnClickListener{
+            clickListener(item)
+        }
     }
 
     override fun getItemCount(): Int {
-        return arrayList.size
+        return itemsList.size
     }
 
-    class ProductViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-
-        val name : TextView = itemView.findViewById(R.id.categorie)
-    }
 }
