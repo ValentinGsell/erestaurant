@@ -3,13 +3,16 @@
     <string name="bienvenue_chez">Bienvenue chez</string>
     <string name="il_ristorante">Il Ristorante</string>
     <string name="entrees">Entrees</string>
-    <string name="plats">plats</string>
-    <string name="desserts">desserts</string>
+    <string name="plat">plats</string>
+    <string name="dessert">desserts</string>
     <string name="categorie" />
     <string name="price">Price</string>
     <string name="name">Name :</string>
     <string name="le_sang">le sang</string>
     <string name="item_price">itemPrice</string>
+    <string name="todo">TODO</string>
+    <string name="plats">Plats</string>
+    <string name="desserts">Desserts</string>
 
     <string-array name="Entrees">
         <item>Antipasti</item>
@@ -28,4 +31,6 @@
         <item>Tiramisu</item>
         <item>Cafe gourmand</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

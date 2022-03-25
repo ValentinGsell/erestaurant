@@ -17,28 +17,32 @@ import org.json.JSONObject
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
-    private lateinit var menuAdapter: MenuAdapter
     private val itemsList = ArrayList<Item>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMenuBinding.inflate(layoutInflater)
+        binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val queue = Volley.newRequestQueue(this)
-        val url = "http://test.api.catering.bluecodegames.com/menu"
 
-        val param = intent.getStringExtra("categorie")
-        val partTitle = findViewById<TextView>(R.id.categorie)
-        partTitle.text = param
+        val param = intent.getStringExtra("categorie").toString()
+        //val partTitle = findViewById<TextView>(R.id.categorie)
+        //partTitle.text = param
 
         title = param
 
 
         //Set up recycle view
         binding.listItems.layoutManager = LinearLayoutManager(this)
-        binding.listItems.adapter = MenuAdapter(itemsList){}
+        binding.listItems.adapter = MenuAdapter(itemsList) {}
 
+        loadDataFromServerByCagtegory(param)
+    }
+
+    private fun loadDataFromServerByCagtegory(category: String){
+
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://test.api.catering.bluecodegames.com/menu"
 
         val jsonObject = JSONObject()
         jsonObject.put("id_shop", 1)
@@ -47,10 +51,8 @@ class MenuActivity : AppCompatActivity() {
             Request.Method.POST, url, jsonObject,
             {response ->
                 val stringResponse = response.toString()
-                Log.d("MenuActivity", stringResponse)
                 val item = Gson().fromJson(stringResponse, APIData::class.java)
                 fillList(item)
-                Log.d("MenuActivity", itemsList.toString())
                 binding.listItems.adapter = MenuAdapter(itemsList) {
                     val intent = Intent(this, DetailActivity::class.java)
                     intent.putExtra(ITEM_KEY, it)
@@ -62,6 +64,7 @@ class MenuActivity : AppCompatActivity() {
         )
         queue.add(stringRequest)
     }
+
 
     companion object{
         const val ITEM_KEY = "item"
@@ -80,3 +83,4 @@ class MenuActivity : AppCompatActivity() {
         //menuAdapter.notifyDataSetChanged()
     }
 }
+

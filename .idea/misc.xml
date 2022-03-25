@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/drawable/roundedbutton.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_desserts.xml" value="0.25" />
-        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_detail.xml" value="0.25" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_detail.xml" value="0.4" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_entrees.xml" value="0.1" />
-        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_home.xml" value="0.264" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_menu.xml" value="0.25" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_plats.xml" value="0.25" />
-        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/item.xml" value="0.4" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/fragment_image.xml" value="0.25" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/image.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/item.xml" value="0.264" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/list_item.xml" value="0.25" />
       </map>
     </option>
