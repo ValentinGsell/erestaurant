@@ -6,6 +6,9 @@ import android.util.Log
 import android.widget.Button
 import fr.isen.gsell.erestaurant.databinding.ActivityDetailBinding
 import fr.isen.gsell.erestaurant.model.Item
+import pl.polak.clicknumberpicker.ClickNumberPickerListener
+import pl.polak.clicknumberpicker.PickerClickType
+import java.io.File
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -27,22 +30,37 @@ class DetailActivity : AppCompatActivity() {
         val carouselAdapter = CarouselAdapter(this, item.images)
         binding.detailSlider.adapter = carouselAdapter
 
-        val cartButton: Button = findViewById<Button>(R.id.addToCartButton)
-        val addButton: Button = findViewById(R.id.add)
+
         var value = item.prices[0].price
 
-        addButton.setOnClickListener {
+        binding.add.setOnClickListener {
             cpt+=1
-            cartButton.setText(item.prices[0].price.toInt()*cpt)
+            binding.total.setText(("Total :" + item.prices[0].price.toFloat() * cpt).toString() + "€")
+            binding.quantity.setText("Number of items : " + cpt)
+
         }
 
-        val removeButton: Button = findViewById(R.id.remove)
-        removeButton.setOnClickListener{
-            cpt-=1
-            cartButton.setText(item.prices[0].price.toInt()*cpt)
+        binding.remove.setOnClickListener {
+            if(cpt == 0){
+                cpt = 0
+            }else{
+                cpt-=1
+                binding.total.setText(("Total :" + item.prices[0].price.toFloat() * cpt).toString() + "€")
+                binding.quantity.setText("Number of items : " + cpt)
+
+            }
+
+        }
+
+        binding.total.setOnClickListener {
 
         }
 
 
     }
+    fun storeInFile(cart: File, name: String, quantity: Int, price: Float){
+        cart.writeText(name + " " + quantity + " "  + price)
+
+    }
+
 }

@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import fr.isen.gsell.erestaurant.BLEHandler.BLEScanActivity
 import fr.isen.gsell.erestaurant.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-//TODO : renommer package : fr.isen.gsell.e_restaurant
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,6 +27,10 @@ class HomeActivity : AppCompatActivity() {
         binding.plats.setOnClickListener {
             goToMenuActivity("Plats")
         }
+
+        binding.bluetooth.setOnClickListener {
+            goToBTActivity()
+        }
     }
 
 
@@ -42,6 +46,11 @@ class HomeActivity : AppCompatActivity() {
         val intent = Intent(this, MenuActivity::class.java)
         intent.putExtra("categorie", category)
         startActivity(intent)
+    }
 
+    private fun goToBTActivity()
+    {
+        val intent = Intent(this, BLEScanActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_items"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#CC791B11"
+        android:background="@color/black"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

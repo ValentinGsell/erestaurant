@@ -31,10 +31,8 @@ internal class MenuAdapter(private var itemsList: ArrayList<Item>, val clickList
         val item = itemsList[position]
         holder.itemTextView.text = item.name_fr
         holder.prix.text = item.prices[0].price +" €"
-        var url: String = "https:\\/\\/cooking-chef.sa.metacdn.com\\/sites\\/default\\/files\\/styles\\/recipe_visuel_node\\/public\\/recettes\\/recette-salade%20lyonnaise.jpg"
 
 
-        //holder.imageView.setImageDrawable(Drawable.createFromPath("C:\\Users\\valen\\AndroidStudioProjects\\AndroidERestaurant2\\app\\src\\main\\res\\drawable-v24\\il_ristorante.png"))
         Picasso.get().load(item.images[0].ifEmpty { null })
             .placeholder(R.drawable.il_ristorante)
             .into(holder.imageView)
