@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.TextView
 import fr.isen.gsell.erestaurant.BLEHandler.BLEScanActivity
 import fr.isen.gsell.erestaurant.databinding.ActivityHomeBinding
+import java.io.File
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -37,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("AndroidERestaurant", "Destroyed succesfully")
+        File(cacheDir.absolutePath+"dataPanier.json").writeText("")
     }
 
 

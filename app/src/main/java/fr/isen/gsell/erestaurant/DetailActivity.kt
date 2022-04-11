@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.google.gson.Gson
+import fr.isen.gsell.erestaurant.cartHandler.CartData
 import fr.isen.gsell.erestaurant.databinding.ActivityDetailBinding
 import fr.isen.gsell.erestaurant.model.Item
 import pl.polak.clicknumberpicker.ClickNumberPickerListener
@@ -12,7 +14,6 @@ import java.io.File
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
-    var cpt: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +21,6 @@ class DetailActivity : AppCompatActivity() {
 
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val item = intent.getSerializableExtra(MenuActivity.ITEM_KEY) as Item
         binding.detailTitle.text = item.name_fr
 
@@ -30,30 +30,39 @@ class DetailActivity : AppCompatActivity() {
         val carouselAdapter = CarouselAdapter(this, item.images)
         binding.detailSlider.adapter = carouselAdapter
 
-
+        var qty: Int = 0
+        var total: Int = 0
         var value = item.prices[0].price
 
         binding.add.setOnClickListener {
-            cpt+=1
-            binding.total.setText(("Total :" + item.prices[0].price.toFloat() * cpt).toString() + "€")
-            binding.quantity.setText("Number of items : " + cpt)
-
+            qty+=1
+            binding.total.setText(("Total :" + item.prices[0].price.toFloat() * qty).toString() + "€")
+            binding.quantity.setText("Number of items : " + qty)
+            total = qty*item.prices[0].price.toString().toInt()
         }
 
         binding.remove.setOnClickListener {
-            if(cpt == 0){
-                cpt = 0
+            if(qty == 0){
+                qty = 0
             }else{
-                cpt-=1
-                binding.total.setText(("Total :" + item.prices[0].price.toFloat() * cpt).toString() + "€")
-                binding.quantity.setText("Number of items : " + cpt)
+                qty-=1
+                binding.total.setText(("Total :" + item.prices[0].price.toFloat() * qty).toString() + "€")
+                binding.quantity.setText("Number of items : " + qty)
+                total = qty*item.prices[0].price.toString().toInt()
 
             }
 
         }
 
         binding.total.setOnClickListener {
+            if(total > 0) {
+                var panierData = CartData(item.name_fr, qty, total)
+                val jsonString = Gson().toJson(panierData)
+                var currentText = ""
 
+                currentText = File(cacheDir.absolutePath+"dataPanier.json").readText()
+                File(cacheDir.absolutePath+"dataPanier.json").writeText(currentText + jsonString)
+            }
         }
 
 

@@ -49,4 +49,10 @@
     <string name="ble_device_connected">Statut: Connecté</string>
     <string name="ble_device_charac_write">Ecriture</string>
     <string name="ble_device_charac_read">Lecture</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="unknown_name">Unkown name</string>
+    <string name="connected">Connected</string>
+    <string name="connecting">Connecting...</string>
+    <string name="roll">Roll</string>
+    <string name="uuid">UUID :</string>
 </resources>

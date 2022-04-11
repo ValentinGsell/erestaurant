@@ -8,7 +8,7 @@
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/drawable/ic_play.xml" value="0.153125" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/drawable/roundedbutton.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_bledetail.xml" value="0.1" />
-        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_bledevice.xml" value="0.2" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_bledevice.xml" value="0.1" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_blescan.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_desserts.xml" value="0.25" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_detail.xml" value="0.176" />
@@ -19,11 +19,12 @@
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/activity_plats.xml" value="0.25" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/ble_item.xml" value="0.1" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/bledata.xml" value="0.16" />
-        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/cell_ble_characteristic.xml" value="0.25" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/cell_ble_characteristic.xml" value="0.2" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/cell_ble_service.xml" value="0.1" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/fragment_image.xml" value="0.25" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/image.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/item.xml" value="0.1" />
+        <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/layout_services.xml" value="0.264" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/layout/list_item.xml" value="0.25" />
         <entry key="..\:/Users/valen/AndroidStudioProjects/AndroidERestaurant2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>

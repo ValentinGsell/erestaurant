@@ -7,6 +7,7 @@ import android.bluetooth.le.ScanResult
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import fr.isen.gsell.erestaurant.MenuAdapter
 import fr.isen.gsell.erestaurant.R
 import fr.isen.gsell.erestaurant.databinding.ActivityBlescanBinding
@@ -22,7 +24,7 @@ import java.util.jar.Manifest
 
 class BLEScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBlescanBinding
-    private var bleAdapter: BleAdapter?=null
+    private lateinit var listBleAdapter: BLEAdapter
     private var isScanning = false
     private val bleList = ArrayList<ScanResult>()
 
@@ -40,7 +42,10 @@ class BLEScanActivity : AppCompatActivity() {
 
         when {
             bluetoothAdapter?.isEnabled  == true ->
-                startScanBLEWithPermission(true)
+                binding.bleScanStateImg.setOnClickListener {
+                    startScanBLEWithPermission(!isScanning)
+
+                }
 
             bluetoothAdapter != null ->
                 askBluetoothPermission()
@@ -49,16 +54,26 @@ class BLEScanActivity : AppCompatActivity() {
                 displayBLEUnavailable()
             }
         }
+        val recyclerBle: RecyclerView = binding.listBle
+        listBleAdapter = BLEAdapter(bleList, BLEAdapter.OnClickListener{ item ->
+            onListBleClick(item)
+        })
 
-        bleAdapter = BleAdapter(arrayListOf()) {
-            val intent = Intent(this, BLEDeviceActivity::class.java)
-            intent.putExtra(DEVICE_KEY, it)
-            startActivity(intent)
+        val layoutManager = LinearLayoutManager(applicationContext)
+        recyclerBle.layoutManager = layoutManager
+        recyclerBle.adapter = listBleAdapter
+
+    }
+
+    private fun onListBleClick(item: ScanResult) {
+        if(item.device.name.isNullOrEmpty()){
+            Toast.makeText(this, "Unkown name", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, item.device.name.toString(), Toast.LENGTH_SHORT).show()
         }
-
-        binding.listBle.layoutManager = LinearLayoutManager(this)
-        binding.listBle.adapter = bleAdapter
-
+        val intent = Intent(this, BLEDeviceActivity::class.java)
+        intent.putExtra(DEVICE_KEY, item.device)
+        startActivity(intent)
     }
 
     override fun onStop() {
@@ -66,18 +81,35 @@ class BLEScanActivity : AppCompatActivity() {
         startScanBLEWithPermission(false)
     }
 
-    private fun startScanBLEWithPermission(enable: Boolean) {
-        if(ActivityCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ){
+    private fun startScanBLEWithPermission(enable: Boolean){
+        if (checkAllPermissionGranted()) {
             startScanBLE(enable)
-            Log.d("La liste de ble :", bleList.toString())
         }else{
-            ActivityCompat.requestPermissions(this, arrayOf(
+            ActivityCompat.requestPermissions(this, getAllPermissions() ,
+                ALL_PERMISSIONS_REQUEST_CODE)
+        }
+    }
+
+    private fun checkAllPermissionGranted(): Boolean {
+        return getAllPermissions().all { permission ->
+            ActivityCompat.checkSelfPermission(
+                this,
+                permission
+            ) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    private fun getAllPermissions(): Array<String> {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            arrayOf(
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.BLUETOOTH_SCAN,
+                android.Manifest.permission.BLUETOOTH_CONNECT
+            )
+        } else {
+            arrayOf(
                 android.Manifest.permission.ACCESS_FINE_LOCATION
-            ), ALL_PERMISSIONS_REQUEST_CODE)
+            )
         }
     }
 
@@ -99,8 +131,8 @@ class BLEScanActivity : AppCompatActivity() {
 
     private val scanCallBack = object : ScanCallback() {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
-            (binding.listBle.adapter as BleAdapter).apply {
-                addElementToList(result)
+            (binding.listBle.adapter as BLEAdapter).apply {
+                addToList(result)
                 notifyDataSetChanged()
             }
 

@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
+
 
     <TextView
         android:id="@+id/characteristicName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="Characteristic name :"
+        android:text="Type :"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,33 +20,60 @@
         android:id="@+id/characteristicUUID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="UUID : "
         app:layout_constraintEnd_toEndOf="@+id/characteristicName"
-        app:layout_constraintStart_toStartOf="@+id/characteristicName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characteristicName" />
 
-    <Button
-        android:id="@+id/ble_device_charac_read"
+    <TextView
+        android:id="@+id/properties"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/ble_device_charac_read"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/characteristicUUID"
+        android:text="Properties"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characteristicUUID" />
 
-    <Button
-        android:id="@+id/ble_device_charac_write"
+    <TextView
+        android:id="@+id/value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ble_device_charac_write"
-        app:layout_constraintBottom_toBottomOf="@+id/ble_device_charac_read"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ble_device_charac_read"
-        app:layout_constraintTop_toTopOf="@+id/ble_device_charac_read"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/properties" />
+
+    <Button
+        android:id="@+id/write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Write"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/value" />
+
+    <Button
+        android:id="@+id/read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Read"
+        app:layout_constraintStart_toEndOf="@+id/write"
+        app:layout_constraintTop_toBottomOf="@+id/value" />
+
+    <Button
+        android:id="@+id/notify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Notify"
+        app:layout_constraintStart_toEndOf="@+id/read"
+        app:layout_constraintTop_toBottomOf="@+id/value" />
 </androidx.constraintlayout.widget.ConstraintLayout>
