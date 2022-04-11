@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import fr.isen.gsell.erestaurant.databinding.ActivityBledeviceBinding
 
 import java.util.*
@@ -19,7 +20,7 @@ class BLEDeviceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBledeviceBinding
     private var bluetoothGatt: BluetoothGatt? = null
     private var timer: Timer? = null
-    private lateinit var adapter: BleServiceAdapter
+    private var adapter: BleServiceAdapter? = null
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,11 @@ class BLEDeviceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val device = intent.getParcelableExtra<BluetoothDevice>(BLEScanActivity.DEVICE_KEY)
+        val layoutManager = LinearLayoutManager(this)
+        val recycler: RecyclerView = binding.serviceList
+
+        recycler.layoutManager = layoutManager
+        recycler.adapter = adapter
         binding.deviceName.text = device?.name ?: "Nom inconnu"
         binding.deviceStatus.text = "disconnected"
 

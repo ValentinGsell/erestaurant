@@ -55,4 +55,12 @@
     <string name="connecting">Connecting...</string>
     <string name="roll">Roll</string>
     <string name="uuid">UUID :</string>
+    <string name="croix">Delete</string>
+    <string name="fake_com">commentary</string>
+    <string name="fake_price">price</string>
+    <string name="equals">equals</string>
+    <string name="fake_quantity">quantity</string>
+    <string name="x">multiply</string>
+    <string name="fake_title">name</string>
+    <string name="euro">%1$s €</string>
 </resources>
